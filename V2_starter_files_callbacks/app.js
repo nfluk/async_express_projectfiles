@@ -28,8 +28,21 @@ app.use(express.static("public"));
 // });
 
 //PROMISES
-function getUsers() {}
+function getUsers() {
+  return new Promise((resolve, reject) => {
+    fs.readFile("data.json", "utf-8", (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        const users = JSON.parse(data);
+        resolve(users);
+      }
+    });
+  });
+}
 
-app.get("/", (req, res) => {});
+app.get("/", (req, res) => {
+  getUsers().then().catch();
+});
 
 app.listen(3000, () => console.log("App listening on port 3000!"));
