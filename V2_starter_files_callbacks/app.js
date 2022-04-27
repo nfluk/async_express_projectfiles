@@ -8,6 +8,13 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
+function asyncHandler(cb) {
+  return async (req, res, next) => {
+    try {
+    } catch {}
+  };
+}
+
 //CALL BACKS
 // function getUsers(cb) {
 //   fs.readFile("data.json", "utf8", (err, data) => {
