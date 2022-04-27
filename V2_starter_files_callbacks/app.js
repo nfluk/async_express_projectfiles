@@ -11,7 +11,10 @@ app.use(express.static("public"));
 function asyncHandler(cb) {
   return async (req, res, next) => {
     try {
-    } catch {}
+      await cb(req, res, next);
+    } catch (err) {
+      res.render("error", { error: err });
+    }
   };
 }
 
