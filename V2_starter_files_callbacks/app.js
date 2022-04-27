@@ -21,6 +21,8 @@ app.get("/", (req, res) => {
   getUsers((err, users) => {
     if (err) {
       res.render("error", { error: err });
+    } else {
+      res.render('index', {'Users', users: users.users});
     }
   });
 });
