@@ -42,7 +42,11 @@ function getUsers() {
 }
 
 app.get("/", (req, res) => {
-  getUsers().then().catch();
+  getUsers()
+    .then((users) => {
+      res.render("index", { title: "Users", users: users.users });
+    })
+    .catch();
 });
 
 app.listen(3000, () => console.log("App listening on port 3000!"));
