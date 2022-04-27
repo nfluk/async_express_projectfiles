@@ -61,13 +61,13 @@ function getUsers() {
 //     });
 // });
 
-app.get("/", async (req, res) => {
-  try {
+// ASYNC/AWAIT
+app.get(
+  "/",
+  asyncHandler(async (req, res) => {
     const users = await getUsers();
     res.render("index", { title: "Users", users: users.users });
-  } catch (err) {
-    res.render("error", { error: err });
-  }
-});
+  })
+);
 
 app.listen(3000, () => console.log("App listening on port 3000!"));
